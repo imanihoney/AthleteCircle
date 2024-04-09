@@ -3,212 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/general.css" />
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <title>Athlete's Circle</title>
-  </head>
-  
-  <body>
+    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="css/feed.css" />
+    <title>Home</title>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBLNxa7eKCk0kWN9_aMlxTVF5VuuquFEYo",
+    authDomain: "athlete-circle.firebaseapp.com",
+    projectId: "athlete-circle",
+    storageBucket: "athlete-circle.appspot.com",
+    messagingSenderId: "798075420875",
+    appId: "1:798075420875:web:eb82e7d45a2a6f7da95b4e",
+    measurementId: "G-G349LRHF0S"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // Function to check if a user is logged in or not
+    function checkAuthState() {
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (!user) {
+          // User is not signed in, redirect to the login page
+          window.location.href = "signin.html";
+        }
+      });
+    }
+  </script>
+</head>
+<body onload="checkAuthState()">
+
+    <div class="navbar">
+        <a href="homepage.html" class="navbar-brand">athlete's circle</a>
+        <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a href="#">Settings</a>
+                <a href="index.html"> Logout</a>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="register.html">Register</a></li>
-        <li><a href="subscribe.html">Subscribe</a></li>
-      </ul>
+        <form id="postForm">
+            <input type="text" id="postTitle" placeholder="Topic" required><br>
+            <textarea id="postContent" placeholder="How are you feeling?" required></textarea><br>
+            <button type="submit">Post</button>
+        </form>
+    
+        <h2>Recent Posts</h2>
+        <div id="postFeed"></div>
     </div>
-    <header class="header" id="header">
-      <div class="row">
-        <div class="container">
-          <div class="header-content">
-            <div class="logo">
-              <a href="index.html"
-              ><img src="images/logo.png" alt="logo"
-            /></a>
-            </div>
-            <div class="nav-search">
-              <div class="form-group">
-                <input type="text" aria-label="button" placeholder="Search Community" />
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </div>
-            </div>
-            <div class="nav-group">
-              <ul>
-                <li class="join">
-                  <a href="register.html">
-                    <i class="fa-solid fa-user"></i>
-                    <span>login / join</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-    <main>
-      <div class="container">
-        <div class="row">
-          <section class="left">
-            <h2>Discussions</h2>
-            <div class="inner-left">
-              <div class="box">
-                <div class="img">
-                  <img src="images/girl1.jpeg" alt="" />
-                </div>
-                <div class="details">
-                  <p>Mental Health Discussion</p>
-                  <h3>What do I do about arguments with my coach?</h3>
-                  <div class="sub-details">
-                    <span>user1234</span>
-                    <span>7h ago.</span>
-                    <span>user54</span>
-                    <span>replied</span>
-                    <span>3h ago</span>
-                    <div class="comment">
-                      <i class="fa-solid fa-comment"></i>
-                      <span>1</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="box">
-                <div class="img">
-                  <img src="images/girl.jpeg" alt="" />
-                </div>
-                <div class="details">
-                  <p>mental health Discussion</p>
-                  <h3>Do you ever just feel depressed?</h3>
-                  <div class="sub-details">
-                    <span>user23</span>
-                    <span>9h ago.</span>
-                    <span>user54</span>
-                    <span>replied</span>
-                    <span>5h ago</span>
-                    <div class="comment">
-                      <i class="fa-solid fa-comment"></i>
-                      <span>2</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="box">
-                <div class="img">
-                  <img src="images/boy1.jpeg" alt="" />
-                </div>
-                <div class="details">
-                  <p>mental health Discussion</p>
-                  <h3>Has anyone ever just felt like quitting?</h3>
-                  <div class="sub-details">
-                    <span>user32</span>
-                    <span>4h ago.</span>
-                    <span>user99</span>
-                    <span>replied</span>
-                    <span>3h ago</span>
-                    <div class="comment">
-                      <i class="fa-solid fa-comment"></i>
-                      <span>5</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="box">
-                <div class="img">
-                  <img src="images/boy.jpeg" alt="" />
-                </div>
-                <div class="details">
-                  <p>mental health discussion</p>
-                  <h3>I just want you all to know that you are loved!</h3>
-                  <div class="sub-details">
-                    <span>user19</span>
-                    <span>24h ago.</span>
-                    <span>user6</span>
-                    <span>replied</span>
-                    <span>1h ago</span>
-                    <div class="comment">
-                      <i class="fa-solid fa-comment"></i>
-                      <span>6</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </section>
-          
-          <section class="right">
-            <div class="box top-forums">
-              <h3>our top forums</h3>
-              <a href="#">View All <i class="fa-solid fa-arrow-right"></i></a>
-              <div class="inner-box">
-                <h4><a href="#">mental health</a></h4>
-                <div class="stats">
-                  <div class="stat comments">
-                    <i class="fa-solid fa-comment"></i><span> 709.4k</span>
-                  </div>
-                  <div class="stat views">
-                    <i class="fa-regular fa-eye"></i><span>104.4M</span>
-                  </div>
-                </div>
-              </div>
-              <div class="inner-box">
-                <h4><a href="#">coaches</a></h4>
-                <div class="stats">
-                  <div class="stat comments">
-                    <i class="fa-solid fa-comment"></i><span> 395.7k</span>
-                  </div>
-                  <div class="stat views">
-                    <i class="fa-regular fa-eye"></i><span>124.2M</span>
-                  </div>
-                </div>
-              </div>
-              <div class="inner-box">
-                <h4><a href="#">quitting</a></h4>
-                <div class="stats">
-                  <div class="stat comments">
-                    <i class="fa-solid fa-comment"></i><span> 178.9k</span>
-                  </div>
-                  <div class="stat views">
-                    <i class="fa-regular fa-eye"></i><span>22.1M</span>
-                  </div>
-                </div>
-              </div>
-              <div class="inner-box">
-                <h4><a href="#">ncaa</a></h4>
-                <div class="stats">
-                  <div class="stat comments">
-                    <i class="fa-solid fa-comment"></i><span> 5.3k</span>
-                  </div>
-                  <div class="stat views">
-                    <i class="fa-regular fa-eye"></i><span>1.6M</span>
-                  </div>
-                </div>
-              </div>
-              <div class="inner-box">
-                <h4><a href="#">transferring</a></h4>
-                <div class="stats">
-                  <div class="stat comments">
-                    <i class="fa-solid fa-comment"></i><span> 4.2k</span>
-                  </div>
-                  <div class="stat views">
-                    <i class="fa-regular fa-eye"></i><span>1.1M</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-                <div class="details">
-              </div>
-            </div>
-          </section>
-        </div>
-    </div>
-    </main>
-    <footer>
-    </footer>
-   
-    <script
-      src="https://kit.fontawesome.com/9e5ba2e3f5.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="js/index.js"></script>
+    
+
   </body>
 </html>
+
+ 
+    
