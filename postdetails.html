@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/postdetails.css" />
+<title>Post Details</title>
+</head>
+<body>
+
+<h1>Post Details</h1>
+
+<div id="postDetails"></div>
+
+<script>
+  function getQueryParams() {
+      var params = {};
+      window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str,key,value) {
+          params[key] = decodeURIComponent(value);
+      });
+      return params;
+  }
+
+  function displayPostDetails() {
+      var params = getQueryParams();
+      var postDetailsContainer = document.getElementById("postDetails");
+      postDetailsContainer.innerHTML = `
+          <h2>${params.title}</h2>
+          <p>${params.content}</p>
+      `;
+  }
+
+  window.addEventListener('load', function() {
+      displayPostDetails();
+  });
+
+   function goToIndexPage() {
+    window.location.href = "index.html";
+  }
+</script>
+<button class="back-btn" onclick="goToIndexPage()">Back to Home</button>
+</div>
+
+
+
+</body>
+</html>

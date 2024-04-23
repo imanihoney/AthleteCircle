@@ -29,7 +29,7 @@ body {
 }
 .post .actions button {
     margin-right: 10px;
-    background-color: #007bff;
+    background-color: red;
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -37,7 +37,7 @@ body {
     cursor: pointer;
 }
 .post .actions button:hover {
-    background-color: #0056b3;
+    background-color: rgb(136, 0, 0);
 }
 form {
     background-color: #fff;
@@ -56,7 +56,7 @@ form textarea {
     border-radius: 3px;
 }
 form button {
-    background-color: #007bff;
+    background-color:red;
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -64,5 +64,5 @@ form button {
     cursor: pointer;
 }
 form button:hover {
-    background-color: #0056b3;
+    background-color: rgb(136, 0, 0);
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/default.css" />
+<link rel="stylesheet" href="css/sign.css" />
+<title>Sign Up</title>
+
+</head>
+<body>
+<div class="navbar">
+        <a href="index.html" class="navbar-brand">athlete's circle</a>
+        <div class="navbar-right">
+          <a href="aboutus.html" class="navbar-link">About Us</a>
+          <a href="contact.html" class="navbar-link">Contact</a>
+ </div>
+</div>
+
+<div class="container">
+  <h1>Sign Up</h1>
+
+  <form id="signupForm">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Sign Up</button>
+  </form>
+</div>
+
+<script>
+  document.getElementById("signupForm").addEventListener("submit", function(event) {
+    event.preventDefault(); 
+
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+
+    setTimeout(function() {
+      alert("Signed up successfully! Redirecting to index page...");
+      window.location.href = "index.html";
+    }, 1000); 
+  });
+</script>
+
+</body>
+</html>
